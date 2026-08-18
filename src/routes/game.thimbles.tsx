@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, RotateCcw } from "lucide-react";
 import { TopBar } from "@/components/TopBar";
-import { Logo } from "@/components/Logo";
 import { GameHeaderStats } from "@/components/GameHeaderStats";
 import { WinFeed } from "@/components/WinFeed";
 import thimble from "@/assets/thimble-new.png";
+import thimblesLogo from "@/assets/thimbles-logo.png";
 import ball from "@/assets/steel-ball.png";
 
 export const Route = createFileRoute("/game/thimbles")({
@@ -33,7 +33,7 @@ function ThimblesGame() {
     setTimeout(() => {
       setSpinning(false);
       setWinner(pick);
-    }, 1120);
+    }, 900);
   };
 
 
@@ -48,7 +48,7 @@ function ThimblesGame() {
       <GameHeaderStats />
 
       <div className="mx-auto max-w-md px-4 pt-4">
-        <Logo size={84} />
+        <img src={thimblesLogo} alt="Thimbles game logo" width={140} height={140} className="mx-auto h-[110px] w-auto object-contain" />
 
         <div className="mt-8 flex items-end justify-center gap-4" style={{ height: 240 }}>
           {[0, 1, 2].map((i) => (
@@ -61,7 +61,7 @@ function ThimblesGame() {
                   loading="lazy"
                   width={40}
                   height={40}
-                  className="absolute bottom-0 left-1/2 z-0 h-[40px] w-[40px] -translate-x-1/2 drop-shadow-[0_0_14px_rgba(255,255,255,0.55)]"
+                  className="absolute bottom-[20px] left-1/2 z-0 h-[40px] w-[40px] -translate-x-1/2"
                 />
               )}
               <div
@@ -71,7 +71,7 @@ function ThimblesGame() {
                   height: 210,
                   transition: "transform 320ms cubic-bezier(0.22,1,0.36,1)",
                   transform: winner === i ? "translateY(-58px)" : "translateY(0)",
-                  animation: spinning ? `thimble-shuffle-${i} 0.34s cubic-bezier(0.45,0,0.55,1) 3` : undefined,
+                  animation: spinning ? `thimble-shuffle-${i} 0.3s cubic-bezier(0.65,0,0.35,1) 3` : undefined,
                 }}
               >
                 <img
@@ -80,7 +80,7 @@ function ThimblesGame() {
                   loading="lazy"
                   width={92}
                   height={210}
-                  className="h-full w-full object-contain drop-shadow-[0_0_18px_rgba(144,214,0,0.4)]"
+                  className="h-full w-full object-contain"
                 />
               </div>
             </div>
