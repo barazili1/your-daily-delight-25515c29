@@ -46,21 +46,6 @@ export function Particles() {
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        for (let j = i + 1; j < parts.length; j++) {
-          const q = parts[j]!;
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const d2 = dx * dx + dy * dy;
-          if (d2 < 110 * 110) {
-            ctx.strokeStyle = `rgba(144,214,0,${0.35 * (1 - Math.sqrt(d2) / 110)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.stroke();
-          }
-        }
-
         ctx.fillStyle = "rgba(170,255,40,0.95)";
         ctx.shadowColor = "rgba(144,214,0,0.9)";
         ctx.shadowBlur = 12;
